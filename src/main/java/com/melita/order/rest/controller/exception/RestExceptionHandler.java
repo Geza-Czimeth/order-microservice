@@ -1,5 +1,6 @@
 package com.melita.order.rest.controller.exception;
 
+import jakarta.validation.ValidationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -35,6 +36,13 @@ public class RestExceptionHandler {
                 }
         );
         return new ResponseEntity<>("Validation error: " + errors, BAD_REQUEST);
+    }
+
+    @ExceptionHandler
+    @ResponseBody
+    public ResponseEntity<String> handleException(ValidationException ex) {
+        log.error("Validation exception: ", ex);
+        return new ResponseEntity<>("Validation error: " + ex.getMessage(), BAD_REQUEST);
     }
 
     @ExceptionHandler
