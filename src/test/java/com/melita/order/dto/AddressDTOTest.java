@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
+import static com.melita.order.OrderServiceTestConstants.ADDRESS;
+import static com.melita.order.OrderServiceTestConstants.BLANK_STRING;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

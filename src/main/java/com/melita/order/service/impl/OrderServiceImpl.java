@@ -1,6 +1,6 @@
 package com.melita.order.service.impl;
 
-import com.melita.order.dto.OrderDTO;
+import com.melita.order.model.Order;
 import com.melita.order.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class OrderServiceImpl implements OrderService {
 
     @Override
-    public void takeOrder(OrderDTO order) {
-
+    public void takeOrder(Order order) {
+        log.info("Received order {}", order);
     }
 }

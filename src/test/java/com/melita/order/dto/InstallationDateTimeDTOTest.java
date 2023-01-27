@@ -8,6 +8,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
+import static com.melita.order.OrderServiceTestConstants.TIMESLOT_1;
+import static com.melita.order.OrderServiceTestConstants.TIMESLOT_2;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

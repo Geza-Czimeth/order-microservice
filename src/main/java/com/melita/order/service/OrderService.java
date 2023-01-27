@@ -1,7 +1,7 @@
 package com.melita.order.service;
 
-import com.melita.order.dto.OrderDTO;
+import com.melita.order.model.Order;
 
 public interface OrderService {
-    void takeOrder(OrderDTO order);
+    void takeOrder(Order order);
 }
