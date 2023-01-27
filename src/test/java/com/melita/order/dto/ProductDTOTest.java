@@ -13,21 +13,21 @@ class ProductDTOTest extends AbstractDTOTest {
 
     @Test
     public void validatorPassesIfProductDTOIsValid() {
-        ProductDTO productDTO = new ProductDTO(PRODUCT_NAME.toString(), PACKAGE_NAME);
+        ProductDTO productDTO = new ProductDTO(PRODUCT_NAME.toString(), PACKAGE_NAME.toString());
         Set<ConstraintViolation<ProductDTO>> violations = validator.validate(productDTO);
         assertTrue(violations.isEmpty());
     }
 
     @Test
     public void validatorFailsIfProductNameIsNull() {
-        ProductDTO productDTO = new ProductDTO(null, PACKAGE_NAME);
+        ProductDTO productDTO = new ProductDTO(null, PACKAGE_NAME.toString());
         Set<ConstraintViolation<ProductDTO>> violations = validator.validate(productDTO);
         assertFalse(violations.isEmpty());
     }
 
     @Test
     public void validatorFailsIfProductNameIsBlank() {
-        ProductDTO productDTO = new ProductDTO(BLANK_STRING, PACKAGE_NAME);
+        ProductDTO productDTO = new ProductDTO(BLANK_STRING, PACKAGE_NAME.toString());
         Set<ConstraintViolation<ProductDTO>> violations = validator.validate(productDTO);
         assertFalse(violations.isEmpty());
     }

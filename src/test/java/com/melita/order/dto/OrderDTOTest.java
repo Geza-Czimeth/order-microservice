@@ -18,7 +18,7 @@ class OrderDTOTest extends AbstractDTOTest {
     private final CustomerDTO customerDTO = new CustomerDTO(FIRST_NAME, LAST_NAME);
     private final List<LocalDateTime> timeSlots = List.of(TIMESLOT_1, TIMESLOT_2);
     private final InstallationDateTimeDTO installationDateTimeDTO = new InstallationDateTimeDTO(timeSlots);
-    private final ProductDTO productDTO = new ProductDTO(PRODUCT_NAME.toString(), PACKAGE_NAME);
+    private final ProductDTO productDTO = new ProductDTO(PRODUCT_NAME.toString(), PACKAGE_NAME.toString());
 
     @Test
     public void validatorPassesIfOrderDTOIsValid() {
