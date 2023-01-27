@@ -1,6 +1,7 @@
 package com.melita.order.rest;
 
 import com.melita.order.dto.OrderDTO;
+import com.melita.order.rest.assembler.OrderModelAssembler;
 import com.melita.order.service.OrderService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -21,18 +22,22 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+    @Autowired
+    private OrderModelAssembler orderModelAssembler;
+
     @Value("${status}")
     private String statusMessage;
 
     @GetMapping("/status")
     public ResponseEntity<String> status() {
-        return new ResponseEntity<String>(statusMessage, OK);
+        return new ResponseEntity<>(statusMessage, OK);
     }
 
     @PostMapping(value = "${order.url.takeorder}", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> takeOrder(@Valid @RequestBody OrderDTO orderDTO) {
         log.info("order received: " + orderDTO);
-        return new ResponseEntity<String>("Order taken", OK);
+        orderService.takeOrder(orderModelAssembler.assemble(orderDTO));
+        return new ResponseEntity<>("Order taken", OK);
     }
 }

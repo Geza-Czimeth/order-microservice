@@ -2,9 +2,11 @@ package com.melita.order.rest.assembler;
 
 import com.melita.order.dto.OrderDTO;
 import com.melita.order.model.*;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class OrderModelAssembler implements ModelAssembler<OrderDTO, Order> {
 
     private final AddressModelAssembler addressModelAssembler;
@@ -18,12 +20,13 @@ public class OrderModelAssembler implements ModelAssembler<OrderDTO, Order> {
         this.installationDateTimeModelAssembler = installationDateTimeModelAssembler;
         this.productModelAssembler = productModelAssembler;
     }
+
     @Override
     public Order assemble(OrderDTO orderDTO) {
         Customer customer = customerModelAssembler.assemble(orderDTO.customerDTO());
         Address address = addressModelAssembler.assemble(orderDTO.addressDTO());
         InstallationDateTime installationDateTime = installationDateTimeModelAssembler.assemble(orderDTO.installationDateTime());
-        List<Product> products = orderDTO.productList().stream().map(productDTO -> productModelAssembler.assemble(productDTO)).toList();
+        List<Product> products = orderDTO.productList().stream().map(productModelAssembler::assemble).toList();
 
         return new Order(customer, address, installationDateTime, products);
     }
