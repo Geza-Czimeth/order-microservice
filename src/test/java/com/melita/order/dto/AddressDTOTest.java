@@ -17,14 +17,14 @@ class AddressDTOTest extends AbstractDTOTest {
     }
 
     @Test
-    public void validatorThrowsExceptionIfFieldIsBlank() {
+    public void validatorThrowsExceptionIfAddressIsBlank() {
         AddressDTO addressDTO = new AddressDTO(BLANK_STRING);
         Set<ConstraintViolation<AddressDTO>> violations = validator.validate(addressDTO);
         assertFalse(violations.isEmpty());
     }
 
     @Test
-    public void validatorThrowsExceptionIfFieldIsNull() {
+    public void validatorThrowsExceptionIfAddressIsNull() {
         AddressDTO addressDTO = new AddressDTO(null);
         Set<ConstraintViolation<AddressDTO>> violations = validator.validate(addressDTO);
         assertFalse(violations.isEmpty());

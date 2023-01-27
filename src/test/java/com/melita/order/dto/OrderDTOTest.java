@@ -15,13 +15,12 @@ class OrderDTOTest extends AbstractDTOTest {
 
     private final AddressDTO addressDTO = new AddressDTO(ADDRESS);
     private final CustomerDTO customerDTO = new CustomerDTO(FIRST_NAME, LAST_NAME);
-
     private final List<LocalDateTime> timeSlots = List.of(TIMESLOT_1, TIMESLOT_2);
     private final InstallationDateTimeDTO installationDateTimeDTO = new InstallationDateTimeDTO(timeSlots);
     private final ProductDTO productDTO = new ProductDTO(PRODUCT_NAME, PACKAGE_NAME);
 
     @Test
-    public void validatorPassesIfOrderIsValid() {
+    public void validatorPassesIfOrderDTOIsValid() {
         OrderDTO orderDTO = new OrderDTO(customerDTO, addressDTO, installationDateTimeDTO, List.of(productDTO));
         Set<ConstraintViolation<OrderDTO>> violations = validator.validate(orderDTO);
         assertTrue(violations.isEmpty());

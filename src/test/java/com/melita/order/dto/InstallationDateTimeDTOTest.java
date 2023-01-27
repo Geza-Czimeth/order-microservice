@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class InstallationDateTimeDTOTest extends AbstractDTOTest {
     @Test
-    public void validatorPassesIfCustomerIsValid() {
+    public void validatorPassesIfInstallationDateTimeDTOIsValid() {
         List<LocalDateTime> timeSlots = List.of(TIMESLOT_1, TIMESLOT_2);
         InstallationDateTimeDTO installationDateTimeDTO = new InstallationDateTimeDTO(timeSlots);
         Set<ConstraintViolation<InstallationDateTimeDTO>> violations = validator.validate(installationDateTimeDTO);

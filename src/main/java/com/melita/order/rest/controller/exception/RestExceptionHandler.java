@@ -1,6 +1,6 @@
 package com.melita.order.rest.controller.exception;
 
-import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
@@ -13,18 +13,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static java.util.logging.Level.SEVERE;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 
 @ControllerAdvice
-@Log
+@Slf4j
 public class RestExceptionHandler {
 
     @ExceptionHandler
     @ResponseBody
     public ResponseEntity<String> validationException(MethodArgumentNotValidException ex) {
-        log.log(SEVERE, "Validation exception: ", ex);
+        log.error("Validation exception: ", ex);
 
         Map<String, String> errors = new HashMap<>();
         List<ObjectError> allErrors = ex.getBindingResult().getAllErrors();
@@ -41,7 +40,7 @@ public class RestExceptionHandler {
     @ExceptionHandler
     @ResponseBody
     public ResponseEntity<String> handleException(Exception ex) {
-        log.log(SEVERE, "Unexpected exception: ", ex);
+        log.error("Unexpected exception: ", ex);
         return new ResponseEntity<>("Unknown exception!", INTERNAL_SERVER_ERROR);
     }
 }

@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class ProductDTOTest extends AbstractDTOTest {
 
     @Test
-    public void validatorPassesIfProductIsValid() {
+    public void validatorPassesIfProductDTOIsValid() {
         ProductDTO productDTO = new ProductDTO(PRODUCT_NAME, PACKAGE_NAME);
         Set<ConstraintViolation<ProductDTO>> violations = validator.validate(productDTO);
         assertTrue(violations.isEmpty());
