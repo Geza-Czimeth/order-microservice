@@ -13,35 +13,35 @@ class ProductDTOTest extends AbstractDTOTest {
 
     @Test
     public void validatorPassesIfProductDTOIsValid() {
-        ProductDTO productDTO = new ProductDTO(PRODUCT_NAME, PACKAGE_NAME);
+        ProductDTO productDTO = new ProductDTO(PRODUCT_NAME.toString(), PACKAGE_NAME.toString());
         Set<ConstraintViolation<ProductDTO>> violations = validator.validate(productDTO);
         assertTrue(violations.isEmpty());
     }
 
     @Test
     public void validatorFailsIfProductNameIsNull() {
-        ProductDTO productDTO = new ProductDTO(null, PACKAGE_NAME);
+        ProductDTO productDTO = new ProductDTO(null, PACKAGE_NAME.toString());
         Set<ConstraintViolation<ProductDTO>> violations = validator.validate(productDTO);
         assertFalse(violations.isEmpty());
     }
 
     @Test
     public void validatorFailsIfProductNameIsBlank() {
-        ProductDTO productDTO = new ProductDTO(BLANK_STRING, PACKAGE_NAME);
+        ProductDTO productDTO = new ProductDTO(BLANK_STRING, PACKAGE_NAME.toString());
         Set<ConstraintViolation<ProductDTO>> violations = validator.validate(productDTO);
         assertFalse(violations.isEmpty());
     }
 
     @Test
     public void validatorFailsIfPackageNameIsNull() {
-        ProductDTO productDTO = new ProductDTO(PRODUCT_NAME, null);
+        ProductDTO productDTO = new ProductDTO(PRODUCT_NAME.toString(), null);
         Set<ConstraintViolation<ProductDTO>> violations = validator.validate(productDTO);
         assertFalse(violations.isEmpty());
     }
 
     @Test
     public void validatorFailsIfPackageNameIsBlank() {
-        ProductDTO productDTO = new ProductDTO(PRODUCT_NAME, BLANK_STRING);
+        ProductDTO productDTO = new ProductDTO(PRODUCT_NAME.toString(), BLANK_STRING);
         Set<ConstraintViolation<ProductDTO>> violations = validator.validate(productDTO);
         assertFalse(violations.isEmpty());
     }
