@@ -1,6 +1,6 @@
 package com.melita.order.service.impl;
 
-import com.melita.order.entity.OrderDTO;
+import com.melita.order.dto.OrderDTO;
 import com.melita.order.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
