@@ -20,13 +20,14 @@ public class ProductModelAssembler implements ModelAssembler<ProductDTO, Product
 
 
     private static final String PACKAGE_NAME_IS_NOT_VALID = "Package name {0} is not valid";
+    private static final String PRODUCT_NAME_IS_NOT_VALID = "Product name {0} is not valid";
 
     private static ProductName getProduct(String productNameAsString) {
         ProductName productName;
         try {
             productName = ProductName.valueOf(productNameAsString);
         } catch (Exception ex) {
-            throw new ValidationException(format("Product name {0} is not valid", productNameAsString));
+            throw new ValidationException(format(PRODUCT_NAME_IS_NOT_VALID, productNameAsString));
         }
         return productName;
     }

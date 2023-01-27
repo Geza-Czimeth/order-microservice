@@ -7,12 +7,10 @@ import java.util.Optional;
 
 public enum TelephonyPackage implements ProductPackage {
     FreeOnNet("Free On net Calls"), UnlimitedCalls("Unlimited Calls");
-
     private final String id;
 
     TelephonyPackage(String id) {
         this.id = id;
-
     }
 
     public static Optional<? extends ProductPackage> getById(String packageName) {
