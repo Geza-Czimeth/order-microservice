@@ -24,12 +24,12 @@ public class RabbitMQTopicConfig {
     private String careQueue;
 
     @Bean
-    public Queue allQueue() {
+    public Queue fulfilmentQueue() {
         return new Queue(fulfilmentQueue, true);
     }
 
     @Bean
-    public Queue adminQueue() {
+    public Queue careQueue() {
         return new Queue(careQueue, true);
     }
 
@@ -39,12 +39,12 @@ public class RabbitMQTopicConfig {
     }
 
     @Bean
-    public Binding adminBinding(Queue adminQueue, TopicExchange topicExchange) {
-        return BindingBuilder.bind(adminQueue).to(topicExchange).with(orderTopic);
+    public Binding careQueueBinding(Queue careQueue, TopicExchange topicExchange) {
+        return BindingBuilder.bind(careQueue).to(topicExchange).with(orderTopic);
     }
 
     @Bean
-    public Binding allBinding(Queue allQueue, TopicExchange topicExchange) {
-        return BindingBuilder.bind(allQueue).to(topicExchange).with(orderTopic);
+    public Binding fulfilmentQueueBinding(Queue fulfilmentQueue, TopicExchange topicExchange) {
+        return BindingBuilder.bind(fulfilmentQueue).to(topicExchange).with(orderTopic);
     }
 }
