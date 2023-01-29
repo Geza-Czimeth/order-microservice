@@ -44,3 +44,4 @@ http://localhost:8080/orders/status
 ### Integration Test with postman
 
 Postman version used: v10.6.0
+File name for requests Melita Order Service.postman_collection.json

@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "b4d869b8-7740-4778-b255-39a4c3e3a063",
+		"name": "Melita Order Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25039163"
+	},
+	"item": [
+		{
+			"name": "Order-Service Status request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/orders/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customerDTO\" : {\r\n    \"firstName\" : \"John\",\r\n    \"lastName\" : \"Doe\"\r\n  },\r\n  \"addressDTO\" : {\r\n    \"address\" : \"aaa\"\r\n  },\r\n  \"installationDateTime\" : {\r\n    \"availableTimeSlots\" : [ [ 2023, 7, 7, 8, 15 ], [ 2023, 7, 7, 9, 15 ] ]\r\n  },\r\n  \"productList\" : [ {\r\n    \"productName\" : \"Internet\",\r\n    \"packageName\" : \"250Mbps\"\r\n  } ]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/orders/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order product with validation error",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customerDTO\" : {\r\n    \"firstName\" : \"John\",\r\n    \"lastName\" : \"Doe\"\r\n  },\r\n  \"addressDTO\" : {\r\n    \"address\" : \"aaa\"\r\n  },\r\n  \"installationDateTime\" : {\r\n    \"availableTimeSlots\" : [ [ 2023, 7, 7, 8, 15 ] ]\r\n  },\r\n  \"productList\" : [ {\r\n    \"productName\" : \"TV\",\r\n    \"packageName\" : \"250Mbps\"\r\n  } ]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/orders/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Address validator",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"address\" : \"aaa\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/orders/address",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders",
+						"address"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
