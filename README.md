@@ -34,12 +34,7 @@ Tested locally with "java 18.0.2 2022-07-19"
 Main class is OrderServiceApplication.
 Just run it as it is.
 
-### Test status
-You can test if the order microservice started up with:
-
-http://localhost:8080/orders/status
-
 ### Integration Test with postman
 
 Postman version used: v10.6.0
-File name for requests Melita Order Service.postman_collection.json
+File name for requests "Melita Order Service Integration tests.postman_collection.json"
