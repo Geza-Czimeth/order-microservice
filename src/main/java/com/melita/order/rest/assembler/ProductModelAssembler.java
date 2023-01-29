@@ -19,8 +19,17 @@ import static java.text.MessageFormat.format;
 public class ProductModelAssembler implements ModelAssembler<ProductDTO, Product> {
 
 
-    private static final String PACKAGE_NAME_IS_NOT_VALID = "Package name {0} is not valid";
-    private static final String PRODUCT_NAME_IS_NOT_VALID = "Product name {0} is not valid";
+    private static final String PACKAGE_NAME_IS_NOT_VALID = "Package name {0} is not valid for the {1} product!";
+    private static final String PRODUCT_NAME_IS_NOT_VALID = "Product name {0} is not valid!";
+
+    @Override
+    public Product assemble(ProductDTO productDTO) {
+        ProductName productName;
+        final String productNameAsString = productDTO.productName();
+        productName = getProduct(productNameAsString);
+        ProductPackage productPackage = getProductPackage(productName, productDTO.packageName());
+        return new Product(productName, productPackage);
+    }
 
     private static ProductName getProduct(String productNameAsString) {
         ProductName productName;
@@ -32,15 +41,6 @@ public class ProductModelAssembler implements ModelAssembler<ProductDTO, Product
         return productName;
     }
 
-    @Override
-    public Product assemble(ProductDTO productDTO) {
-        ProductName productName;
-        final String productNameAsString = productDTO.productName();
-        productName = getProduct(productNameAsString);
-        ProductPackage productPackage = getProductPackage(productName, productDTO.packageName());
-        return new Product(productName, productPackage);
-    }
-
     private ProductPackage getProductPackage(ProductName productName, String packageName) {
         Optional<? extends ProductPackage> productPackage = switch (productName) {
             case Internet -> InternetPackage.getById(packageName);
@@ -49,6 +49,6 @@ public class ProductModelAssembler implements ModelAssembler<ProductDTO, Product
             case Mobile -> MobilePackage.getById(packageName);
         };
 
-        return productPackage.orElseThrow(() -> new ValidationException(format(PACKAGE_NAME_IS_NOT_VALID, packageName)));
+        return productPackage.orElseThrow(() -> new ValidationException(format(PACKAGE_NAME_IS_NOT_VALID, packageName, productName)));
     }
 }
