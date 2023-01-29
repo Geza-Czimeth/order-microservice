@@ -8,6 +8,7 @@ Configurable at resources/application.properties.
 Check for its config with http://localhost:8888/order-service/default
 
 ### RabbitMQ setup with docker
+Connects to RabbitMQ just like the other microservices in the system, the RabbitMQ only need to be started up once.
 <pre>
 The following docker command used to start rabbitmq.
 
