@@ -52,39 +52,6 @@
 			"response": []
 		},
 		{
-			"name": "Order Internet without authentication --> This must fail!",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"customerDTO\" : {\r\n    \"firstName\" : \"John\",\r\n    \"lastName\" : \"Doe\"\r\n  },\r\n  \"addressDTO\" : {\r\n    \"address\" : \"aaa\"\r\n  },\r\n  \"installationDateTime\" : {\r\n    \"availableTimeSlots\" : [ [ 2023, 7, 7, 8, 15 ] ]\r\n  },\r\n  \"productList\" : [ {\r\n    \"productName\" : \"Internet\",\r\n    \"packageName\" : \"250Mbps\"\r\n  } ]\r\n}"
-				},
-				"url": {
-					"raw": "http://localhost:8080/orders/order",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"orders",
-						"order"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Order Internet 250Mbps Multiple timeslots",
 			"request": {
 				"auth": {
@@ -220,7 +187,40 @@
 			"response": []
 		},
 		{
-			"name": "Order product with validation error",
+			"name": "Order Internet without authentication",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customerDTO\" : {\r\n    \"firstName\" : \"John\",\r\n    \"lastName\" : \"Doe\"\r\n  },\r\n  \"addressDTO\" : {\r\n    \"address\" : \"aaa\"\r\n  },\r\n  \"installationDateTime\" : {\r\n    \"availableTimeSlots\" : [ [ 2023, 7, 7, 8, 15 ] ]\r\n  },\r\n  \"productList\" : [ {\r\n    \"productName\" : \"Internet\",\r\n    \"packageName\" : \"250Mbps\"\r\n  } ]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/orders/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order product with wrong package",
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -248,6 +248,96 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n  \"customerDTO\" : {\r\n    \"firstName\" : \"John\",\r\n    \"lastName\" : \"Doe\"\r\n  },\r\n  \"addressDTO\" : {\r\n    \"address\" : \"aaa\"\r\n  },\r\n  \"installationDateTime\" : {\r\n    \"availableTimeSlots\" : [ [ 2023, 7, 7, 8, 15 ] ]\r\n  },\r\n  \"productList\" : [ {\r\n    \"productName\" : \"TV\",\r\n    \"packageName\" : \"250Mbps\"\r\n  } ]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/orders/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order non existing product",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customerDTO\" : {\r\n    \"firstName\" : \"John\",\r\n    \"lastName\" : \"Doe\"\r\n  },\r\n  \"addressDTO\" : {\r\n    \"address\" : \"aaa\"\r\n  },\r\n  \"installationDateTime\" : {\r\n    \"availableTimeSlots\" : [ [ 2023, 7, 7, 8, 15 ] ]\r\n  },\r\n  \"productList\" : [ {\r\n    \"productName\" : \"Movie nights\",\r\n    \"packageName\" : \"250Mbps\"\r\n  } ]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/orders/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orders",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order with missing last name",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customerDTO\" : {\r\n    \"firstName\" : \"John\",\r\n    \"lastName\" : \"\"\r\n  },\r\n  \"addressDTO\" : {\r\n    \"address\" : \"aaa\"\r\n  },\r\n  \"installationDateTime\" : {\r\n    \"availableTimeSlots\" : [ [ 2023, 7, 7, 8, 15 ] ]\r\n  },\r\n  \"productList\" : [ {\r\n    \"productName\" : \"Internet\",\r\n    \"packageName\" : \"250Mbps\"\r\n  } ]\r\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/orders/order",
