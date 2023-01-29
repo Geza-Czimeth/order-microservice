@@ -1,13 +1,13 @@
 {
 	"info": {
-		"_postman_id": "b4d869b8-7740-4778-b255-39a4c3e3a063",
+		"_postman_id": "e6e80b28-466b-409c-9bd8-7b3b9909f3d7",
 		"name": "Melita Order Service Integration tests",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "25039163"
 	},
 	"item": [
 		{
-			"name": "Order Internet 250Mbps",
+			"name": "1. Order Internet 250Mbps",
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -52,7 +52,7 @@
 			"response": []
 		},
 		{
-			"name": "Order Internet 250Mbps Multiple timeslots",
+			"name": "2. Order Internet 250Mbps Multiple timeslots",
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -97,7 +97,7 @@
 			"response": []
 		},
 		{
-			"name": "Order Internet and Tv",
+			"name": "3. Order Internet and Tv",
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -142,7 +142,7 @@
 			"response": []
 		},
 		{
-			"name": "Order Internet,TV,Telephony,Mobile",
+			"name": "4. Order Internet,TV,Telephony,Mobile",
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -187,7 +187,7 @@
 			"response": []
 		},
 		{
-			"name": "Order Internet without authentication",
+			"name": "5. Order Internet without authentication",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -220,7 +220,7 @@
 			"response": []
 		},
 		{
-			"name": "Order product with wrong package",
+			"name": "6. Order product with wrong package",
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -265,7 +265,7 @@
 			"response": []
 		},
 		{
-			"name": "Order non existing product",
+			"name": "7. Order non existing product",
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -310,7 +310,7 @@
 			"response": []
 		},
 		{
-			"name": "Order with missing last name",
+			"name": "8. Order with missing last name",
 			"request": {
 				"auth": {
 					"type": "basic",
