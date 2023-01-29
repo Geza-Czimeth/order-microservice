@@ -37,6 +37,7 @@ Just run it as it is.
 ### Integration Test with postman
 
 Postman version used: v10.6.0
+
 File name for requests "Melita Order Service Integration tests.postman_collection.json"
 
 ### Logging
