@@ -23,8 +23,8 @@ public class OrderModelAssembler implements ModelAssembler<OrderDTO, Order> {
 
     @Override
     public Order assemble(OrderDTO orderDTO) {
-        Customer customer = customerModelAssembler.assemble(orderDTO.customerDTO());
-        Address address = addressModelAssembler.assemble(orderDTO.addressDTO());
+        Customer customer = customerModelAssembler.assemble(orderDTO.customer());
+        Address address = addressModelAssembler.assemble(orderDTO.address());
         InstallationDateTime installationDateTime = installationDateTimeModelAssembler.assemble(orderDTO.installationDateTime());
         List<Product> products = orderDTO.productList().stream().map(productModelAssembler::assemble).toList();
 
