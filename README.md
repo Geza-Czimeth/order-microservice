@@ -38,3 +38,7 @@ Just run it as it is.
 
 Postman version used: v10.6.0
 File name for requests "Melita Order Service Integration tests.postman_collection.json"
+
+### Logging
+
+The logger logs to console for better visibility
