@@ -1,5 +1,6 @@
 package com.melita.order.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -14,6 +15,15 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
+    private static final String USER = "USER";
+
+    @Value("${order.service.username}")
+    private String userName;
+
+    @Value("${order.service.password}")
+    private String password;
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.
@@ -28,9 +38,9 @@ public class SecurityConfig {
     @Bean
     public InMemoryUserDetailsManager userDetailsService() {
         UserDetails user = User
-                .withUsername("admin")
-                .password(passwordEncoder().encode("admin123"))
-                .roles("ADMIN")
+                .withUsername(userName)
+                .password(passwordEncoder().encode(password))
+                .roles(USER)
                 .build();
 
         return new InMemoryUserDetailsManager(user);
